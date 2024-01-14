@@ -22,9 +22,9 @@ A simple React Native application that converts text input into an image using t
 ## Running the App
 
 Make sure you have Expo CLI installed. If not, install it globally:
-
+```bash
 npm install -g expo-cli
-
+```
 ## Run the app:
 
 ### expo start
