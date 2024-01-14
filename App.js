@@ -31,8 +31,6 @@ export default function App() {
     </View>
   );
 }
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -40,4 +38,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  input: {
+    height: 40,
+    width: 300,
+    borderWidth: 2,
+    borderColor: "blue",
+    borderRadius: 20,
+    margin: 10,
+    padding: 10,
+  },
+  buttonStyle: {
+    backgroundColor: 'blue',
+    borderRadius: 20,
+    padding: 15,
+    margin: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginTop: 20,
+  },
 });
+
