@@ -6,6 +6,34 @@ export default function App() {
   const [imageBase64, setImageBase64] = useState(null);
   const [input, setInput] = useState("");
 
+  const getImage = async () => {
+    try {
+      async function query(data) {
+        const response = await fetch(
+          "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0",
+          {
+            headers: { Authorization: "Bearer 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" },
+            method: "POST",
+            body: JSON.stringify(data),
+          }
+        );
+        const result = await response.blob();
+        return result;
+      }
+
+      const imageBlob = await query({ "inputs": input });
+
+      const reader = new FileReader();
+      reader.readAsDataURL(imageBlob);
+
+      reader.onloadend = () => {
+        const base64data = reader.result;
+        setImageBase64(base64data);
+      };
+    } catch (error) {
+      console.error("Error fetching image:", error);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -31,6 +59,7 @@ export default function App() {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -65,4 +94,3 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
-
