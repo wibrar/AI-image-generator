@@ -1,38 +1,15 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, Image, StyleSheet, TextInput, View, Text, TouchableOpacity } from 'react-native';
+import { getImageData } from './services/hugging-face.service';
 
 export default function App() {
   const [imageBase64, setImageBase64] = useState(null);
   const [input, setInput] = useState("");
 
   const getImage = async () => {
-    try {
-      async function query(data) {
-        const response = await fetch(
-          "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0",
-          {
-            headers: { Authorization: "Bearer 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" },
-            method: "POST",
-            body: JSON.stringify(data),
-          }
-        );
-        const result = await response.blob();
-        return result;
-      }
-
-      const imageBlob = await query({ "inputs": input });
-
-      const reader = new FileReader();
-      reader.readAsDataURL(imageBlob);
-
-      reader.onloadend = () => {
-        const base64data = reader.result;
-        setImageBase64(base64data);
-      };
-    } catch (error) {
-      console.error("Error fetching image:", error);
-    }
+    const resp = await getImageData(input);
+    setImageBase64(resp);
   };
 
   return (
