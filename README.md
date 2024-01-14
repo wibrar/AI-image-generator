@@ -47,9 +47,8 @@ Hugging Face API
 `services/hugging-face.service.js`: Service for interacting with the Hugging Face API.
 Screenshots
 
-## License
-This project is licensed under the MIT License.
-
+## Screenshots
+![Alt text](/relative/path/to/img.jpg?raw=true "screenshot 1")
 ## Acknowledgments
 Hugging Face for providing the text-to-image conversion API.
 Feel free to contribute to the project and make it even better! If you encounter any issues, please open an issue.
